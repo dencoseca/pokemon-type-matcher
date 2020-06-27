@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import SearchField from './components/SearchField';
 
 function App() {
@@ -7,8 +7,8 @@ function App() {
     <div className="App">
       <div className="container">
         <header className="header">
-          <h1 class="header--title">Pokemon Type Matcher</h1>
-          <p class="header--subtitle">
+          <h1 className="header--title">Pokemon Type Matcher</h1>
+          <p className="header--subtitle">
             Choose two pokemon and see who comes out on top!
           </p>
         </header>
