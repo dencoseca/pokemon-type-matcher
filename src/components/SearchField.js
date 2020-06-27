@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
 export default function SearchField() {
+  const [query, setQuery] = useState('');
+
   return (
     <div>
       <form class="search-field">
@@ -11,6 +13,8 @@ export default function SearchField() {
           class="search-field--input"
           type="text"
           placeholder="e.g. Scyther"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
         ></input>
       </form>
     </div>
