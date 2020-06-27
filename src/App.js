@@ -1,24 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import SearchField from './components/SearchField';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+        <header className="header">
+          <h1 class="header--title">Pokemon Type Matcher</h1>
+          <p class="header--subtitle">
+            Choose two pokemon and see who comes out on top!
+          </p>
+        </header>
+        <div className="search-fields">
+          <SearchField />
+          <SearchField />
+        </div>
+      </div>
     </div>
   );
 }
