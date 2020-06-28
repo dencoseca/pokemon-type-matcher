@@ -6,6 +6,7 @@ export default class SearchField extends React.Component {
     super();
     this.state = {
       query: '',
+      buttonText: '',
       pokemon: {},
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,9 +29,20 @@ export default class SearchField extends React.Component {
   }
 
   handleChange(e) {
-    this.setState({
-      query: e.target.value,
-    });
+    if (e.target.value) {
+      const term = e.target.value;
+      const capitalizedTerm = term[0].toUpperCase() + term.slice(1);
+
+      this.setState({
+        query: term,
+        buttonText: capitalizedTerm,
+      });
+    } else {
+      this.setState({
+        query: '',
+        buttonText: '',
+      });
+    }
   }
 
   render() {
@@ -49,8 +61,8 @@ export default class SearchField extends React.Component {
             onChange={this.handleChange}
           ></input>
           <button className="search-field--button" type="submit">
-            {this.state.query}
-            {this.state.query === '' ? '' : '...'} I Choose You!
+            {this.state.buttonText}
+            {this.state.buttonText === '' ? '' : '...'} I Choose You!
           </button>
         </form>
         <PokemonStats pokemon={this.state.pokemon} />
