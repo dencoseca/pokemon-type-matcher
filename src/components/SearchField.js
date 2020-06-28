@@ -8,11 +8,11 @@ export default class SearchField extends React.Component {
       query: '',
       pokemon: {},
     };
-    this.searchForPokemon = this.searchForPokemon.bind(this);
-    this.setQuery = this.setQuery.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  searchForPokemon = async (e) => {
+  async handleSubmit(e) {
     e.preventDefault();
     const url = `https://pokeapi.co/api/v2/pokemon/${this.state.query}`;
 
@@ -25,9 +25,9 @@ export default class SearchField extends React.Component {
     } catch (err) {
       console.error(err);
     }
-  };
+  }
 
-  setQuery(e) {
+  handleChange(e) {
     this.setState({
       query: e.target.value,
     });
@@ -36,7 +36,7 @@ export default class SearchField extends React.Component {
   render() {
     return (
       <div className="pokemon-column">
-        <form className="search-field" onSubmit={this.searchForPokemon}>
+        <form className="search-field" onSubmit={this.handleSubmit}>
           <label className="search-field--label" htmlFor="searchField">
             Pick a Pokemon
           </label>
@@ -46,7 +46,7 @@ export default class SearchField extends React.Component {
             name="query"
             placeholder="e.g. Scyther"
             value={this.state.query}
-            onChange={this.setQuery}
+            onChange={this.handleChange}
           ></input>
           <button className="search-field--button" type="submit">
             {this.state.query}
