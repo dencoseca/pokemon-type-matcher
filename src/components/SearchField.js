@@ -8,29 +8,33 @@ export default class SearchField extends React.Component {
       query: '',
       buttonText: '',
       pokemon: {},
+      isThereAPokemon: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
-  async handleSubmit(e) {
-    e.preventDefault();
-    const url = `https://pokeapi.co/api/v2/pokemon/${this.state.query}`;
-
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      this.setState({
-        pokemon: data,
-      });
-    } catch (err) {
-      console.error(err);
+  handleSubmit(event) {
+    event.preventDefault();
+    if (!this.state.query) {
+      return;
     }
+    fetch(`https://pokeapi.co/api/v2/pokemon/${this.state.query}`)
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState({
+          pokemon: data,
+          isThereAPokemon: true,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
-  handleChange(e) {
-    if (e.target.value) {
-      const term = e.target.value;
+  handleChange(event) {
+    if (event.target.value) {
+      const term = event.target.value;
       const capitalizedTerm = term[0].toUpperCase() + term.slice(1);
 
       this.setState({
@@ -56,7 +60,7 @@ export default class SearchField extends React.Component {
             className="search-field--input"
             type="text"
             name="query"
-            placeholder="e.g. Scyther"
+            placeholder="event.g. Scyther"
             value={this.state.query}
             onChange={this.handleChange}
           ></input>
@@ -65,7 +69,9 @@ export default class SearchField extends React.Component {
             {this.state.buttonText === '' ? '' : '...'} I Choose You!
           </button>
         </form>
-        <PokemonStats pokemon={this.state.pokemon} />
+        {this.state.isThereAPokemon ? (
+          <PokemonStats pokemon={this.state.pokemon} types={this.state.types} />
+        ) : null}
       </div>
     );
   }

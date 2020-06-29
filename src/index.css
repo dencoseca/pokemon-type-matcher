@@ -71,4 +71,26 @@ body {
         top: 5px;
         box-shadow: none; }
 
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0; }
+  .card--number {
+    font-size: 2rem; }
+  .card--name {
+    font-size: 3rem;
+    margin-bottom: 2rem; }
+  .card--sprite {
+    display: block;
+    width: 70%;
+    height: auto;
+    align-self: center; }
+  .card--types {
+    margin-top: 2rem;
+    display: flex; }
+  .card--type {
+    font-size: 1.5rem;
+    margin: 1rem 1rem;
+    padding: 0.2rem 1rem; }
+
 /*# sourceMappingURL=index.css.map */

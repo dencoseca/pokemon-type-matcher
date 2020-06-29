@@ -98,3 +98,41 @@ body {
   }
 }
 
+// PokemonStats Component
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+
+  &--number {
+    font-size: 2rem;
+  }
+
+  &--name {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  &--sprite {
+    display: block;
+    width: 70%;
+    height: auto;
+    align-self: center;
+  }
+
+  &--types {
+    margin-top: 2rem;
+    display: flex;
+  }
+
+  &--type {
+    font-size: 1.5rem;
+    margin: 1rem 1rem;
+    padding: 0.2rem 1rem;
+  }
+}
+
+// DEBUG
+
+// @import '../src/debug.css';
