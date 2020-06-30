@@ -1,10 +1,13 @@
 import React from 'react';
 
 export default function PokemonStats({ pokemon }) {
-  const types = pokemon.types.map((type, i) => {
+  const name = pokemon.name;
+  const capitalizedName = name[0].toUpperCase() + name.slice(1);
+
+  const types = pokemon.types.map((item, i) => {
     return (
       <span key={i} className="card--type">
-        {type.type.name}
+        {item.type.name}
       </span>
     );
   });
@@ -13,16 +16,16 @@ export default function PokemonStats({ pokemon }) {
     <div className="card">
       <div className="card--head">
         <span className="card--number">No. {pokemon.id}</span>
-        <h2 className="card--name">{pokemon.name}</h2>
+        <h2 className="card--name">{capitalizedName}</h2>
       </div>
-      <div className="card--image">
+      <div className="card--body">
         <img
           className="card--sprite"
           src={pokemon.sprites.front_default}
           alt={pokemon.name}
         />
       </div>
-      <div className="card--types">{types}</div>
+      <div className="card--foot">{types}</div>
     </div>
   );
 }

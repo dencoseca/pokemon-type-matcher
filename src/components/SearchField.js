@@ -60,7 +60,7 @@ export default class SearchField extends React.Component {
             className="search-field--input"
             type="text"
             name="query"
-            placeholder="event.g. Scyther"
+            placeholder="e.g. Scyther"
             value={this.state.query}
             onChange={this.handleChange}
           ></input>
