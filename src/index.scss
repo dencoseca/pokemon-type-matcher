@@ -103,7 +103,19 @@ body {
 .card {
   display: flex;
   flex-direction: column;
-  padding: 2rem 0;
+  margin-top: 1rem;
+
+  &--head,
+  &--image,
+  &--types {
+    border-radius: 10px;
+    background-color: #fff;
+    margin-top: 0.5rem;
+  }
+
+  &--head {
+    padding: 1rem 1.5rem;
+  }
 
   &--number {
     font-size: 2rem;
@@ -111,19 +123,22 @@ body {
 
   &--name {
     font-size: 3rem;
-    margin-bottom: 2rem;
+  }
+
+  &--image {
+    display: flex;
+    justify-content: center;
   }
 
   &--sprite {
     display: block;
     width: 70%;
     height: auto;
-    align-self: center;
   }
 
   &--types {
-    margin-top: 2rem;
     display: flex;
+    justify-content: space-around;
   }
 
   &--type {

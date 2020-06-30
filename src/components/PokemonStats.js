@@ -15,11 +15,13 @@ export default function PokemonStats({ pokemon }) {
         <span className="card--number">No. {pokemon.id}</span>
         <h2 className="card--name">{pokemon.name}</h2>
       </div>
-      <img
-        className="card--sprite"
-        src={pokemon.sprites.front_default}
-        alt={pokemon.name}
-      />
+      <div className="card--image">
+        <img
+          className="card--sprite"
+          src={pokemon.sprites.front_default}
+          alt={pokemon.name}
+        />
+      </div>
       <div className="card--types">{types}</div>
     </div>
   );
