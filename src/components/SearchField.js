@@ -89,7 +89,7 @@ export default class SearchField extends React.Component {
           this.state.isThereAPokemon ? (
             <PokemonStats pokemon={this.state.pokemon} />
           ) : (
-            <img class="pokeball" src={pokeball} alt="pokeball" />
+            <img className="pokeball" src={pokeball} alt="pokeball" />
           )
         }
       </div>
