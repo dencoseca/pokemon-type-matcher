@@ -77,9 +77,21 @@ body {
       box-shadow: none;
     }
   }
+
+  &--vs {
+    font-size: 4rem;
+    margin-top: 15rem;
+  }
 }
 
 /* SearchField Component */
+
+.pokemon-column {
+  .pokeball {
+    width: 320px;
+    margin-top: 7rem;
+  }
+}
 
 .search-fields {
   display: flex;

@@ -35,6 +35,7 @@ export default class App extends React.Component {
             />
             <div className="vs-column">
               <button className="vs-column--reset-button">Reset</button>
+              <p className="vs-column--vs">VS</p>
             </div>
             <SearchField
               firstOrSecond="secondPokemonTypes"

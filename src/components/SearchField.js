@@ -1,5 +1,6 @@
 import React from 'react';
 import PokemonStats from './PokemonStats';
+import pokeball from '../pokeball.png';
 
 export default class SearchField extends React.Component {
   constructor(props) {
@@ -87,7 +88,9 @@ export default class SearchField extends React.Component {
           /* If there is a result from the API display it */
           this.state.isThereAPokemon ? (
             <PokemonStats pokemon={this.state.pokemon} />
-          ) : null
+          ) : (
+            <img class="pokeball" src={pokeball} alt="pokeball" />
+          )
         }
       </div>
     );
