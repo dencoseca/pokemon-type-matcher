@@ -9,6 +9,14 @@ export default class App extends React.Component {
       secondPokemonTypes: [],
     };
     this.setPokemonTypes = this.setPokemonTypes.bind(this);
+    this.resetTypeData = this.resetTypeData.bind(this);
+  }
+
+  resetTypeData() {
+    this.setState({
+      firstPokemonTypes: [],
+      secondPokemonTypes: [],
+    });
   }
 
   // Collect types from search for comparison
@@ -32,14 +40,15 @@ export default class App extends React.Component {
             <SearchField
               firstOrSecond="firstPokemonTypes"
               setPokemonTypes={this.setPokemonTypes}
+              resetTypeData={this.resetTypeData}
             />
             <div className="vs-column">
-              <button className="vs-column--reset-button">Reset</button>
               <p className="vs-column--vs">VS</p>
             </div>
             <SearchField
               firstOrSecond="secondPokemonTypes"
               setPokemonTypes={this.setPokemonTypes}
+              resetTypeData={this.resetTypeData}
             />
           </div>
         </div>

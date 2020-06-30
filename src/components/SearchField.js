@@ -13,6 +13,17 @@ export default class SearchField extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.setState({
+      query: '',
+      buttonText: '',
+      pokemon: {},
+      isThereAPokemon: false,
+    });
+    this.props.resetTypeData();
   }
 
   // Get data from pokeAPI
@@ -79,6 +90,12 @@ export default class SearchField extends React.Component {
             value={this.state.query}
             onChange={this.handleChange}
           ></input>
+          <span
+            className="search-field--reset-button"
+            onClick={this.handleClick}
+          >
+            Reset
+          </span>
           <button className="search-field--button" type="submit">
             {this.state.buttonText}
             {this.state.buttonText === '' ? '' : '...'} I Choose You!
