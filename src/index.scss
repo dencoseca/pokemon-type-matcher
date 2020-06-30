@@ -56,13 +56,6 @@ body {
 
 /* SearchField Component */
 
-.pokemon-column {
-  .pokeball {
-    width: 320px;
-    margin-top: 7rem;
-  }
-}
-
 .search-fields {
   display: flex;
   justify-content: center;
@@ -108,6 +101,7 @@ body {
       text-decoration: none;
       font-size: 1rem;
       font-family: 'Kelly Slab';
+      user-select: none;
 
       &:hover {
         top: 53px;
@@ -156,6 +150,29 @@ body {
         top: 5px;
         box-shadow: none;
       }
+    }
+  }
+}
+.pokeball-container {
+  position: relative;
+
+  .pokeball {
+    width: 320px;
+    margin-top: 7rem;
+  }
+
+  .secret-randomizer {
+    height: 50px;
+    width: 50px;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 247px;
+    right: 135px;
+    border-radius: 25px;
+
+    &:focus {
+      outline: none;
     }
   }
 }

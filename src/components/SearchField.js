@@ -14,6 +14,32 @@ export default class SearchField extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.randomizePokemon = this.randomizePokemon.bind(this);
+  }
+
+  randomizePokemon() {
+    const randomNum = Math.floor(Math.random() * 807 + 1);
+    fetch(`https://pokeapi.co/api/v2/pokemon/${randomNum}`)
+      .then((response) => response.json())
+      .then((data) => {
+        // Record pokemon data to be passed to PokemonStats component
+        this.setState({
+          pokemon: data,
+          isThereAPokemon: true,
+        });
+        // Send types data back up to App component for comparison
+        const types = data.types.map((item) => {
+          return item.type.name;
+        });
+
+        this.props.setPokemonTypes({
+          firstOrSecond: this.props.firstOrSecond,
+          types,
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
 
   handleClick() {
@@ -106,7 +132,13 @@ export default class SearchField extends React.Component {
           this.state.isThereAPokemon ? (
             <PokemonStats pokemon={this.state.pokemon} />
           ) : (
-            <img className="pokeball" src={pokeball} alt="pokeball" />
+            <div className="pokeball-container">
+              <img className="pokeball" src={pokeball} alt="pokeball" />
+              <button
+                className="secret-randomizer"
+                onClick={this.randomizePokemon}
+              ></button>
+            </div>
           )
         }
       </div>
