@@ -2,8 +2,8 @@ import React from 'react';
 import PokemonStats from './PokemonStats';
 
 export default class SearchField extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       query: '',
       buttonText: '',
@@ -26,6 +26,16 @@ export default class SearchField extends React.Component {
           pokemon: data,
           isThereAPokemon: true,
         });
+        // ///////////////////?//////
+        const types = data.types.map((item) => {
+          return item.type.name;
+        });
+
+        this.props.setPokemonTypes({
+          firstOrSecond: this.props.firstOrSecond,
+          types: types,
+        });
+        // //////////////////////////////
       })
       .catch((err) => {
         console.log(err);
@@ -70,7 +80,7 @@ export default class SearchField extends React.Component {
           </button>
         </form>
         {this.state.isThereAPokemon ? (
-          <PokemonStats pokemon={this.state.pokemon} types={this.state.types} />
+          <PokemonStats pokemon={this.state.pokemon} />
         ) : null}
       </div>
     );
