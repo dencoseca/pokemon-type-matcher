@@ -143,13 +143,14 @@ body {
 
   &--foot {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
   }
 
   &--type {
     font-size: 1.5rem;
     margin: 1rem 1rem;
-    padding: 0.2rem 1rem;
+    padding: 0.3rem 1rem;
+    border-radius: 5px;
   }
 }
 
