@@ -33,7 +33,7 @@ export default class App extends React.Component {
           <header className="header">
             <h1 className="header--title">Pokemon Type Matcher</h1>
             <p className="header--subtitle">
-              Choose two pokemon and see who comes out on top!
+              Choose two pokemon and see who is super effective!
             </p>
           </header>
           <div className="search-fields">

@@ -127,14 +127,16 @@ body {
     position: absolute;
     top: 247px;
     right: 135px;
-    border-radius: 25px; }
+    border-radius: 25px;
+    cursor: pointer; }
     .pokeball-container .secret-randomizer:focus {
       outline: none; }
 
 .card {
   display: flex;
   flex-direction: column;
-  margin-top: 1rem; }
+  margin-top: 1rem;
+  max-width: 320px; }
   .card--head, .card--body, .card--foot {
     border-radius: 10px;
     background-color: #fff;

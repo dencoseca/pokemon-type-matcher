@@ -170,6 +170,7 @@ body {
     top: 247px;
     right: 135px;
     border-radius: 25px;
+    cursor: pointer;
 
     &:focus {
       outline: none;
@@ -183,6 +184,7 @@ body {
   display: flex;
   flex-direction: column;
   margin-top: 1rem;
+  max-width: 320px;
 
   &--head,
   &--body,
