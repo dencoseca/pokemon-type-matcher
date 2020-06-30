@@ -14,6 +14,7 @@ export default class SearchField extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  // Get data from API
   handleSubmit(event) {
     event.preventDefault();
     if (!this.state.query) {
@@ -22,11 +23,12 @@ export default class SearchField extends React.Component {
     fetch(`https://pokeapi.co/api/v2/pokemon/${this.state.query}`)
       .then((response) => response.json())
       .then((data) => {
+        // Record pokemon data to be passed to PokemonStats component
         this.setState({
           pokemon: data,
           isThereAPokemon: true,
         });
-        // ///////////////////?//////
+        // Send types data back up to App component for comparison
         const types = data.types.map((item) => {
           return item.type.name;
         });
@@ -35,15 +37,16 @@ export default class SearchField extends React.Component {
           firstOrSecond: this.props.firstOrSecond,
           types: types,
         });
-        // //////////////////////////////
       })
       .catch((err) => {
         console.log(err);
       });
   }
 
+  // Control input and button
   handleChange(event) {
     if (event.target.value) {
+      // Capitalize pokemon name and display in button
       const term = event.target.value;
       const capitalizedTerm = term[0].toUpperCase() + term.slice(1);
 
@@ -52,6 +55,7 @@ export default class SearchField extends React.Component {
         buttonText: capitalizedTerm,
       });
     } else {
+      // Reset state when user deletes input text
       this.setState({
         query: '',
         buttonText: '',

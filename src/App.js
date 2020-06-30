@@ -10,6 +10,8 @@ export default class App extends React.Component {
     };
     this.setPokemonTypes = this.setPokemonTypes.bind(this);
   }
+
+  // Collect types from search for comparison
   setPokemonTypes(pokemon) {
     this.setState({
       [pokemon.firstOrSecond]: pokemon.types,

@@ -1,9 +1,11 @@
 import React from 'react';
 
 export default function PokemonStats({ pokemon }) {
+  // Capitalize name for display
   const name = pokemon.name;
   const capitalizedName = name[0].toUpperCase() + name.slice(1);
 
+  // Create a span element for each type
   const types = pokemon.types.map((item, i) => {
     return (
       <span key={i} className="card--type">
