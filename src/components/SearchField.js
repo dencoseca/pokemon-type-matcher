@@ -15,11 +15,11 @@ export default class SearchField extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.randomizePokemon = this.randomizePokemon.bind(this);
+    this.fetchPokemon = this.fetchPokemon.bind(this);
   }
 
-  randomizePokemon() {
-    const randomNum = Math.floor(Math.random() * 807 + 1);
-    fetch(`https://pokeapi.co/api/v2/pokemon/${randomNum}`)
+  fetchPokemon(query) {
+    fetch(`https://pokeapi.co/api/v2/pokemon/${query}`)
       .then((response) => response.json())
       .then((data) => {
         // Record pokemon data to be passed to PokemonStats component
@@ -40,6 +40,11 @@ export default class SearchField extends React.Component {
       .catch((err) => {
         console.error(err);
       });
+  }
+
+  randomizePokemon() {
+    const randomNum = Math.floor(Math.random() * 807 + 1);
+    this.fetchPokemon(randomNum);
   }
 
   handleClick() {
@@ -58,27 +63,7 @@ export default class SearchField extends React.Component {
     if (!this.state.query) {
       return;
     }
-    fetch(`https://pokeapi.co/api/v2/pokemon/${this.state.query}`)
-      .then((response) => response.json())
-      .then((data) => {
-        // Record pokemon data to be passed to PokemonStats component
-        this.setState({
-          pokemon: data,
-          isThereAPokemon: true,
-        });
-        // Send types data back up to App component for comparison
-        const types = data.types.map((item) => {
-          return item.type.name;
-        });
-
-        this.props.setPokemonTypes({
-          firstOrSecond: this.props.firstOrSecond,
-          types,
-        });
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    this.fetchPokemon(this.state.query);
   }
 
   // Control input and fetch button
