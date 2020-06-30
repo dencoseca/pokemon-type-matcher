@@ -33,6 +33,9 @@ export default class App extends React.Component {
               firstOrSecond="firstPokemonTypes"
               setPokemonTypes={this.setPokemonTypes}
             />
+            <div className="vs-column">
+              <button className="vs-column--reset-button">Reset</button>
+            </div>
             <SearchField
               firstOrSecond="secondPokemonTypes"
               setPokemonTypes={this.setPokemonTypes}

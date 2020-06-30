@@ -83,9 +83,12 @@ export default class SearchField extends React.Component {
             {this.state.buttonText === '' ? '' : '...'} I Choose You!
           </button>
         </form>
-        {this.state.isThereAPokemon ? (
-          <PokemonStats pokemon={this.state.pokemon} />
-        ) : null}
+        {
+          /* If there is a result from the API display it */
+          this.state.isThereAPokemon ? (
+            <PokemonStats pokemon={this.state.pokemon} />
+          ) : null
+        }
       </div>
     );
   }
