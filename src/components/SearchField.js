@@ -14,7 +14,7 @@ export default class SearchField extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  // Get data from API
+  // Get data from pokeAPI
   handleSubmit(event) {
     event.preventDefault();
     if (!this.state.query) {
