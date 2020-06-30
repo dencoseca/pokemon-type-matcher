@@ -63,6 +63,9 @@ export default function PokemonStats({ pokemon }) {
       case 'fairy':
         spanColor = '#ee99ac';
         break;
+      case '???':
+        spanColor = '#68a090';
+        break;
       default:
         spanColor = '#000000';
     }
