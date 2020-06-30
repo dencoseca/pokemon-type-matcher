@@ -6,7 +6,7 @@ export default function PokemonStats({ pokemon }) {
   const capitalizedName = name[0].toUpperCase() + name.slice(1);
 
   // Set the color of each type
-  function setTypeSpanColor(type) {
+  function setSpanColorByType(type) {
     let spanColor;
     switch (type) {
       case 'normal':
@@ -75,7 +75,7 @@ export default function PokemonStats({ pokemon }) {
 
   // Create an array of span elements
   const types = pokemon.types.map((item, i) => {
-    const typeColor = setTypeSpanColor(item.type.name);
+    const typeColor = setSpanColorByType(item.type.name);
 
     return (
       <span

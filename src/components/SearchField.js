@@ -36,23 +36,23 @@ export default class SearchField extends React.Component {
 
         this.props.setPokemonTypes({
           firstOrSecond: this.props.firstOrSecond,
-          types: types,
+          types,
         });
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
       });
   }
 
-  // Control input and button
+  // Control input and fetch button
   handleChange(event) {
     if (event.target.value) {
       // Capitalize pokemon name and display in button
-      const term = event.target.value;
-      const capitalizedTerm = term[0].toUpperCase() + term.slice(1);
+      const query = event.target.value;
+      const capitalizedTerm = query[0].toUpperCase() + query.slice(1);
 
       this.setState({
-        query: term,
+        query,
         buttonText: capitalizedTerm,
       });
     } else {
