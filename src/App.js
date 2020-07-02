@@ -107,11 +107,13 @@ export default class App extends React.Component {
         firstPokemonTypes: [],
         firstPokemonWeaknesses: [],
         firstPokemonIsSuperEffective: false,
+        secondPokemonIsSuperEffective: false,
       });
     } else {
       this.setState({
         secondPokemonTypes: [],
         secondPokemonWeaknesses: [],
+        firstPokemonIsSuperEffective: false,
         secondPokemonIsSuperEffective: false,
       });
     }
