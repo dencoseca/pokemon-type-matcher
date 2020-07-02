@@ -33,25 +33,19 @@ export default class App extends React.Component {
     return foundWeaknesses;
   }
 
-  comparePokemon() {
-    let firstPokemonWeaknesses = [];
-    this.state.firstPokemonTypes.forEach((type) => {
-      this.fetchTypeData(type)
-        .then((foundWeaknesses) => {
-          foundWeaknesses.forEach((weakness) => {
-            firstPokemonWeaknesses.push(weakness);
-          });
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    });
+  async comparePokemon() {
+    if (
+      this.state.firstPokemonTypes.length > 0 &&
+      this.state.secondPokemonTypes.length > 0
+    ) {
+      const weaknesses = await this.fetchTypeData('bug');
+      console.log(weaknesses);
+    }
   }
 
-  resetTypeData() {
+  resetTypeData(firstOrSecond) {
     this.setState({
-      firstPokemonTypes: [],
-      secondPokemonTypes: [],
+      [firstOrSecond]: [],
     });
   }
 
@@ -60,12 +54,7 @@ export default class App extends React.Component {
     this.setState({
       [pokemon.firstOrSecond]: pokemon.types,
     });
-    if (
-      this.state.firstPokemonTypes.length > 0 &&
-      this.state.secondPokemonTypes.length > 0
-    ) {
-      this.comparePokemon();
-    }
+    console.log(this.state.firstPokemonTypes, this.state.secondPokemonTypes);
   }
 
   render() {
