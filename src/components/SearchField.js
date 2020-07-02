@@ -18,8 +18,8 @@ export default class SearchField extends React.Component {
     this.fetchPokemon = this.fetchPokemon.bind(this);
   }
 
-  fetchPokemon(query) {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${query}`)
+  async fetchPokemon(query) {
+    await fetch(`https://pokeapi.co/api/v2/pokemon/${query}`)
       .then((response) => response.json())
       .then((data) => {
         // Record pokemon data to be passed to PokemonStats component
