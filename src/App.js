@@ -14,6 +14,7 @@ export default class App extends React.Component {
     this.resetTypeData = this.resetTypeData.bind(this);
     this.comparePokemon = this.comparePokemon.bind(this);
     this.fetchTypeData = this.fetchTypeData.bind(this);
+    this.findPokemonWeaknesses = this.findPokemonWeaknesses.bind(this);
   }
 
   fetchTypeData(type) {
@@ -38,9 +39,9 @@ export default class App extends React.Component {
     });
   }
 
-  async comparePokemon() {
-    Promise.all(
-      this.state.firstPokemonTypes.map((type) => {
+  findPokemonWeaknesses(pokemonTypes) {
+    return Promise.all(
+      pokemonTypes.map((type) => {
         return this.fetchTypeData(type);
       })
     ).then((result) => {
@@ -50,8 +51,19 @@ export default class App extends React.Component {
           foundWeaknesses.push(weakness);
         });
       });
-      console.log(foundWeaknesses);
+      return [...new Set(foundWeaknesses)];
     });
+  }
+
+  async comparePokemon() {
+    const firstPokemonWeaknesses = await this.findPokemonWeaknesses(
+      this.state.firstPokemonTypes
+    );
+    const secondPokemonWeaknesses = await this.findPokemonWeaknesses(
+      this.state.secondPokemonTypes
+    );
+    console.log(`the first pokemon is weak to: ${firstPokemonWeaknesses}\nthe second pokemon is weak to: ${secondPokemonWeaknesses}
+    `);
   }
 
   resetTypeData(firstOrSecond) {
