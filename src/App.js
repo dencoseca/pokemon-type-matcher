@@ -16,31 +16,42 @@ export default class App extends React.Component {
     this.fetchTypeData = this.fetchTypeData.bind(this);
   }
 
-  async fetchTypeData(type) {
-    const foundWeaknesses = await fetch(
-      `https://pokeapi.co/api/v2/type/${type}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        const weakTo = data.damage_relations.double_damage_from.map(
-          (type) => type.name
-        );
-        return weakTo;
-      })
-      .catch((err) => {
+  fetchTypeData(type) {
+    return new Promise((resolve, reject) => {
+      try {
+        const foundWeaknesses = fetch(`https://pokeapi.co/api/v2/type/${type}`)
+          .then((response) => response.json())
+          .then((data) => {
+            const weakTo = data.damage_relations.double_damage_from.map(
+              (type) => type.name
+            );
+            return weakTo;
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+        resolve(foundWeaknesses);
+      } catch (err) {
         console.error(err);
-      });
-    return foundWeaknesses;
+        reject();
+      }
+    });
   }
 
   async comparePokemon() {
-    if (
-      this.state.firstPokemonTypes.length > 0 &&
-      this.state.secondPokemonTypes.length > 0
-    ) {
-      const weaknesses = await this.fetchTypeData('bug');
-      console.log(weaknesses);
-    }
+    Promise.all(
+      this.state.firstPokemonTypes.map((type) => {
+        return this.fetchTypeData(type);
+      })
+    ).then((result) => {
+      const foundWeaknesses = [];
+      result.forEach((arrayOfWeaknesses) => {
+        arrayOfWeaknesses.forEach((weakness) => {
+          foundWeaknesses.push(weakness);
+        });
+      });
+      console.log(foundWeaknesses);
+    });
   }
 
   resetTypeData(firstOrSecond) {
@@ -54,7 +65,12 @@ export default class App extends React.Component {
     this.setState({
       [pokemon.firstOrSecond]: pokemon.types,
     });
-    console.log(this.state.firstPokemonTypes, this.state.secondPokemonTypes);
+    if (
+      this.state.firstPokemonTypes.length > 0 &&
+      this.state.secondPokemonTypes.length > 0
+    ) {
+      this.comparePokemon();
+    }
   }
 
   render() {
