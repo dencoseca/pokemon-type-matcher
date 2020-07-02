@@ -42,11 +42,13 @@ export default class SearchField extends React.Component {
       });
   }
 
+  // fill data with a random pokemon
   randomizePokemon() {
     const randomNum = Math.floor(Math.random() * 807 + 1);
     this.fetchPokemon(randomNum);
   }
 
+  // reset pokemon data
   handleClick() {
     this.setState({
       query: '',

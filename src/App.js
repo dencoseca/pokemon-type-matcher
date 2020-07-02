@@ -12,7 +12,7 @@ export default class App extends React.Component {
     };
     this.setPokemonTypes = this.setPokemonTypes.bind(this);
     this.resetTypeData = this.resetTypeData.bind(this);
-    this.comparePokemon = this.comparePokemon.bind(this);
+    this.setWeaknesses = this.setWeaknesses.bind(this);
     this.fetchTypeData = this.fetchTypeData.bind(this);
     this.findPokemonWeaknesses = this.findPokemonWeaknesses.bind(this);
   }
@@ -39,7 +39,7 @@ export default class App extends React.Component {
     });
   }
 
-  findPokemonWeaknesses(pokemonTypes) {
+  async findPokemonWeaknesses(pokemonTypes) {
     return Promise.all(
       pokemonTypes.map((type) => {
         return this.fetchTypeData(type);
@@ -55,15 +55,32 @@ export default class App extends React.Component {
     });
   }
 
-  async comparePokemon() {
-    const firstPokemonWeaknesses = await this.findPokemonWeaknesses(
+  async setWeaknesses() {
+    // get a list of weaknesses from pokeAPI
+    const firstPokemonUnfilteredWeaknesses = await this.findPokemonWeaknesses(
       this.state.firstPokemonTypes
     );
-    const secondPokemonWeaknesses = await this.findPokemonWeaknesses(
+    const secondPokemonUnfilteredWeaknesses = await this.findPokemonWeaknesses(
       this.state.secondPokemonTypes
     );
-    console.log(`the first pokemon is weak to: ${firstPokemonWeaknesses}\nthe second pokemon is weak to: ${secondPokemonWeaknesses}
-    `);
+
+    // filter out types self-super-effective types from dual type pokemon
+    const firstPokemonWeaknesses = firstPokemonUnfilteredWeaknesses.filter(
+      (type) => {
+        return !this.state.firstPokemonTypes.includes(type);
+      }
+    );
+    const secondPokemonWeaknesses = secondPokemonUnfilteredWeaknesses.filter(
+      (type) => {
+        return !this.state.secondPokemonTypes.includes(type);
+      }
+    );
+
+    // record the weaknesses
+    this.setState({
+      firstPokemonWeaknesses,
+      secondPokemonWeaknesses,
+    });
   }
 
   resetTypeData(firstOrSecond) {
@@ -81,7 +98,7 @@ export default class App extends React.Component {
       this.state.firstPokemonTypes.length > 0 &&
       this.state.secondPokemonTypes.length > 0
     ) {
-      this.comparePokemon();
+      this.setWeaknesses();
     }
   }
 
