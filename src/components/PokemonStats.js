@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function PokemonStats({ pokemon }) {
+export default function PokemonStats({ pokemon, amISuperEffective }) {
   // Capitalize name for display
   const name = pokemon.name;
   const capitalizedName = name[0].toUpperCase() + name.slice(1);
@@ -89,7 +89,7 @@ export default function PokemonStats({ pokemon }) {
   });
 
   return (
-    <div className="card">
+    <div className={amISuperEffective ? 'i-am-super-effective card' : 'card'}>
       <div className="card--head">
         <span className="card--number">No. {pokemon.id}</span>
         <h2 className="card--name">{capitalizedName}</h2>

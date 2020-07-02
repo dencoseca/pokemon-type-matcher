@@ -31,9 +31,6 @@ export default class App extends React.Component {
       firstPokemonIsSuperEffective,
       secondPokemonIsSuperEffective,
     });
-    // ===================== REMOVE LATER =====================
-    console.log('APP DATA AFTER COMPARISON', this.state);
-    // ===================== REMOVE LATER =====================
   }
 
   fetchTypeData(type) {
@@ -100,9 +97,6 @@ export default class App extends React.Component {
       firstPokemonWeaknesses,
       secondPokemonWeaknesses,
     });
-    // ===================== REMOVE LATER =====================
-    console.log('APP DATA BEFORE COMPARISON', this.state);
-    // ===================== REMOVE LATER =====================
     this.setSuperEffectivePokemon();
   }
 
@@ -151,6 +145,9 @@ export default class App extends React.Component {
               firstOrSecond="firstPokemonTypes"
               setPokemonTypes={this.setPokemonTypes}
               resetPokemonData={this.resetPokemonData}
+              amISuperEffective={
+                this.state.firstPokemonIsSuperEffective ? true : false
+              }
             />
             <div className="vs-column">
               <p className="vs-column--vs">VS</p>
@@ -159,6 +156,9 @@ export default class App extends React.Component {
               firstOrSecond="secondPokemonTypes"
               setPokemonTypes={this.setPokemonTypes}
               resetPokemonData={this.resetPokemonData}
+              amISuperEffective={
+                this.state.secondPokemonIsSuperEffective ? true : false
+              }
             />
           </div>
         </div>

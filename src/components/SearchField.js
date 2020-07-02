@@ -117,7 +117,10 @@ export default class SearchField extends React.Component {
         {
           /* If there is a result from the API display it */
           this.state.isThereAPokemon ? (
-            <PokemonStats pokemon={this.state.pokemon} />
+            <PokemonStats
+              pokemon={this.state.pokemon}
+              amISuperEffective={this.props.amISuperEffective}
+            />
           ) : (
             <div className="pokeball-container">
               <img className="pokeball" src={pokeball} alt="pokeball" />

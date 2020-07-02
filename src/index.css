@@ -163,5 +163,15 @@ body {
     margin: 1rem 1rem;
     padding: 0.3rem 1rem;
     border-radius: 5px; }
+  .card.i-am-super-effective:after {
+    content: '';
+    position: relative;
+    left: -40px;
+    top: -400px;
+    z-index: -1;
+    height: 400px;
+    width: 400px;
+    border-radius: 200px;
+    background-color: yellow; }
 
 /*# sourceMappingURL=index.css.map */
