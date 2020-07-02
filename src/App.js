@@ -17,6 +17,23 @@ export default class App extends React.Component {
     this.setWeaknesses = this.setWeaknesses.bind(this);
     this.fetchTypeData = this.fetchTypeData.bind(this);
     this.findPokemonWeaknesses = this.findPokemonWeaknesses.bind(this);
+    this.setSuperEffectivePokemon = this.setSuperEffectivePokemon.bind(this);
+  }
+
+  setSuperEffectivePokemon() {
+    const firstPokemonIsSuperEffective = this.state.firstPokemonTypes.some(
+      (type) => this.state.secondPokemonWeaknesses.includes(type)
+    );
+    const secondPokemonIsSuperEffective = this.state.secondPokemonTypes.some(
+      (type) => this.state.firstPokemonWeaknesses.includes(type)
+    );
+    this.setState({
+      firstPokemonIsSuperEffective,
+      secondPokemonIsSuperEffective,
+    });
+    // ===================== REMOVE LATER =====================
+    console.log('APP DATA AFTER COMPARISON', this.state);
+    // ===================== REMOVE LATER =====================
   }
 
   fetchTypeData(type) {
@@ -66,7 +83,7 @@ export default class App extends React.Component {
       this.state.secondPokemonTypes
     );
 
-    // filter out types self-super-effective types from dual type pokemon
+    // filter out self-super-effective types from dual type pokemon
     const firstPokemonWeaknesses = firstPokemonUnfilteredWeaknesses.filter(
       (type) => {
         return !this.state.firstPokemonTypes.includes(type);
@@ -84,10 +101,12 @@ export default class App extends React.Component {
       secondPokemonWeaknesses,
     });
     // ===================== REMOVE LATER =====================
-    console.log('APP STATE DATA', this.state);
+    console.log('APP DATA BEFORE COMPARISON', this.state);
     // ===================== REMOVE LATER =====================
+    this.setSuperEffectivePokemon();
   }
 
+  // reset all state data for a particular pokemon
   resetPokemonData(firstOrSecond) {
     if (firstOrSecond === 'firstPokemonTypes') {
       this.setState({
