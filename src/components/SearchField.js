@@ -56,7 +56,7 @@ export default class SearchField extends React.Component {
       pokemon: {},
       isThereAPokemon: false,
     });
-    this.props.resetTypeData(this.props.firstOrSecond);
+    this.props.resetPokemonData(this.props.firstOrSecond);
   }
 
   // Get data from pokeAPI

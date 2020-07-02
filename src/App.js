@@ -7,11 +7,13 @@ export default class App extends React.Component {
     this.state = {
       firstPokemonTypes: [],
       firstPokemonWeaknesses: [],
+      firstPokemonIsSuperEffective: false,
       secondPokemonTypes: [],
       secondPokemonWeaknesses: [],
+      secondPokemonIsSuperEffective: false,
     };
     this.setPokemonTypes = this.setPokemonTypes.bind(this);
-    this.resetTypeData = this.resetTypeData.bind(this);
+    this.resetPokemonData = this.resetPokemonData.bind(this);
     this.setWeaknesses = this.setWeaknesses.bind(this);
     this.fetchTypeData = this.fetchTypeData.bind(this);
     this.findPokemonWeaknesses = this.findPokemonWeaknesses.bind(this);
@@ -81,12 +83,25 @@ export default class App extends React.Component {
       firstPokemonWeaknesses,
       secondPokemonWeaknesses,
     });
+    // ===================== REMOVE LATER =====================
+    console.log('APP STATE DATA', this.state);
+    // ===================== REMOVE LATER =====================
   }
 
-  resetTypeData(firstOrSecond) {
-    this.setState({
-      [firstOrSecond]: [],
-    });
+  resetPokemonData(firstOrSecond) {
+    if (firstOrSecond === 'firstPokemonTypes') {
+      this.setState({
+        firstPokemonTypes: [],
+        firstPokemonWeaknesses: [],
+        firstPokemonIsSuperEffective: false,
+      });
+    } else {
+      this.setState({
+        secondPokemonTypes: [],
+        secondPokemonWeaknesses: [],
+        secondPokemonIsSuperEffective: false,
+      });
+    }
   }
 
   // Collect types from search for comparison
@@ -116,7 +131,7 @@ export default class App extends React.Component {
             <SearchField
               firstOrSecond="firstPokemonTypes"
               setPokemonTypes={this.setPokemonTypes}
-              resetTypeData={this.resetTypeData}
+              resetPokemonData={this.resetPokemonData}
             />
             <div className="vs-column">
               <p className="vs-column--vs">VS</p>
@@ -124,7 +139,7 @@ export default class App extends React.Component {
             <SearchField
               firstOrSecond="secondPokemonTypes"
               setPokemonTypes={this.setPokemonTypes}
-              resetTypeData={this.resetTypeData}
+              resetPokemonData={this.resetPokemonData}
             />
           </div>
         </div>
