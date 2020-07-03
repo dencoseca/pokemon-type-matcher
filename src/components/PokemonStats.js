@@ -5,6 +5,20 @@ export default function PokemonStats({ pokemon, amISuperEffective }) {
   const name = pokemon.name;
   const capitalizedName = name[0].toUpperCase() + name.slice(1);
 
+  function randomQuote() {
+    const quotes = [
+      "Goddamn I'm so super effective right now!",
+      'Waaaaaaaaaaaah! The Power!',
+      "You're going DOWN!",
+      `Can you smeeeeeeeell what the ${capitalizedName} is cookin?!`,
+      'Here comes the smackdown!',
+    ];
+
+    const randomIndex = Math.floor(Math.random() * quotes.length - 1);
+
+    return quotes[randomIndex];
+  }
+
   // Set the color of each type
   function setSpanColorByType(type) {
     let spanColor;
@@ -89,7 +103,7 @@ export default function PokemonStats({ pokemon, amISuperEffective }) {
   });
 
   return (
-    <div className={amISuperEffective ? 'i-am-super-effective card' : 'card'}>
+    <div className={amISuperEffective ? 'super-effective--bang card' : 'card'}>
       <div className="card--head">
         <span className="card--number">No. {pokemon.id}</span>
         <h2 className="card--name">{capitalizedName}</h2>
@@ -102,6 +116,9 @@ export default function PokemonStats({ pokemon, amISuperEffective }) {
         />
       </div>
       <div className="card--foot">{types}</div>
+      <p className="super-effective--text">
+        {amISuperEffective ? randomQuote() : null}
+      </p>
     </div>
   );
 }
