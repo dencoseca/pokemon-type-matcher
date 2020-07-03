@@ -136,7 +136,8 @@ body {
   display: flex;
   flex-direction: column;
   margin-top: 1rem;
-  max-width: 320px; }
+  max-width: 320px;
+  animation: fadeIn 0.2s ease-in forwards; }
   .card--head, .card--body, .card--foot {
     border-radius: 10px;
     background-color: #fff;
@@ -178,6 +179,7 @@ body {
     height: 600px;
     width: 600px;
     opacity: 0.5;
+    filter: blur(10px);
     animation: superEffective 1s infinite linear; }
   .card.super-effective--bang:after {
     content: '';
@@ -191,6 +193,7 @@ body {
     height: 500px;
     width: 500px;
     opacity: 0.5;
+    filter: blur(10px);
     animation: superEffective 0.9s infinite linear; }
   .card .super-effective--text {
     font-size: 3rem;
@@ -224,5 +227,12 @@ body {
     transform: scale(1.1); }
   100% {
     transform: scale(0.9); } }
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0); }
+  100% {
+    opacity: 1;
+    transform: scale(1); } }
 
 /*# sourceMappingURL=index.css.map */

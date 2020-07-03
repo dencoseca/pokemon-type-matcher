@@ -185,6 +185,7 @@ body {
   flex-direction: column;
   margin-top: 1rem;
   max-width: 320px;
+  animation: fadeIn 0.2s ease-in forwards;
 
   &--head,
   &--body,
@@ -248,6 +249,7 @@ body {
       height: 600px;
       width: 600px;
       opacity: 0.5;
+      filter: blur(10px);
       animation: superEffective 1s infinite linear;
     }
     &--bang:after {
@@ -262,6 +264,7 @@ body {
       height: 500px;
       width: 500px;
       opacity: 0.5;
+      filter: blur(10px);
       animation: superEffective 0.9s infinite linear;
     }
   }
@@ -309,6 +312,18 @@ body {
   }
   100% {
     transform: scale(0.9);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
