@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.scss';
 import SearchField from './components/SearchField';
 
 export default class App extends React.Component {
