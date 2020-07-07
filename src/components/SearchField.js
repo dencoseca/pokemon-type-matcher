@@ -29,6 +29,7 @@ export default class SearchField extends React.Component {
         });
       })
       .catch((err) => {
+        // catch spelling errors and display a message to user
         console.error(err);
         if (!this.props.spellBetter) {
           this.props.setSpellBetter(true);
@@ -41,6 +42,13 @@ export default class SearchField extends React.Component {
 
   // fill data with a random pokemon
   randomizePokemon = () => {
+    // empty any previous pokemon form inpuit and button labels
+    this.setState({
+      query: '',
+      buttonText: '',
+    });
+
+    // generate and fetch a random pokemon
     const randomNum = Math.floor(Math.random() * 807 + 1);
     this.fetchPokemon(randomNum);
   };

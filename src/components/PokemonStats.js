@@ -10,6 +10,7 @@ export default function PokemonStats({ pokemon, amISuperEffective }) {
     "You're going DOWN!",
     `Can you smeeeeeeeell what the ${capitalizedName} is cookin?!`,
     'Here comes the smackdown!',
+    'In your FACE!',
   ];
   const randomIndex = Math.floor(Math.random() * quotes.length);
   const quote = quotes[randomIndex];
