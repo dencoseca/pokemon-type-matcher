@@ -127,6 +127,13 @@ export default class App extends React.Component {
   };
 
   render() {
+    const searchFieldSharedProps = {
+      setPokemonTypes: this.setPokemonTypes,
+      resetPokemonData: this.resetPokemonData,
+      setSpellBetter: this.setSpellBetter,
+      spellBetter: this.state.spellBetter,
+    };
+
     return (
       <div className="container">
         <header className="header">
@@ -148,26 +155,20 @@ export default class App extends React.Component {
         <div className="search-fields">
           <SearchField
             firstOrSecond="firstPokemonTypes"
-            setPokemonTypes={this.setPokemonTypes}
-            resetPokemonData={this.resetPokemonData}
             amISuperEffective={
               this.state.firstPokemonIsSuperEffective ? true : false
             }
-            setSpellBetter={this.setSpellBetter}
-            spellBetter={this.state.spellBetter}
+            {...searchFieldSharedProps}
           />
           <div className="vs-column">
             <p className="vs-column--vs">VS</p>
           </div>
           <SearchField
             firstOrSecond="secondPokemonTypes"
-            setPokemonTypes={this.setPokemonTypes}
-            resetPokemonData={this.resetPokemonData}
             amISuperEffective={
               this.state.secondPokemonIsSuperEffective ? true : false
             }
-            setSpellBetter={this.setSpellBetter}
-            spellBetter={this.state.spellBetter}
+            {...searchFieldSharedProps}
           />
         </div>
       </div>
