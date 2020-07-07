@@ -12,15 +12,9 @@ export default class App extends React.Component {
       secondPokemonWeaknesses: [],
       secondPokemonIsSuperEffective: false,
     };
-    this.setPokemonTypes = this.setPokemonTypes.bind(this);
-    this.resetPokemonData = this.resetPokemonData.bind(this);
-    this.setWeaknesses = this.setWeaknesses.bind(this);
-    this.fetchTypeData = this.fetchTypeData.bind(this);
-    this.findPokemonWeaknesses = this.findPokemonWeaknesses.bind(this);
-    this.setSuperEffectivePokemon = this.setSuperEffectivePokemon.bind(this);
   }
 
-  setSuperEffectivePokemon() {
+  setSuperEffectivePokemon = () => {
     const firstPokemonIsSuperEffective = this.state.firstPokemonTypes.some(
       (type) => this.state.secondPokemonWeaknesses.includes(type)
     );
@@ -33,7 +27,7 @@ export default class App extends React.Component {
     });
   }
 
-  fetchTypeData(type) {
+  fetchTypeData = (type) => {
     return new Promise((resolve, reject) => {
       try {
         const foundWeaknesses = fetch(`https://pokeapi.co/api/v2/type/${type}`)
@@ -55,7 +49,7 @@ export default class App extends React.Component {
     });
   }
 
-  async findPokemonWeaknesses(pokemonTypes) {
+  findPokemonWeaknesses = async (pokemonTypes) => {
     return Promise.all(
       pokemonTypes.map((type) => {
         return this.fetchTypeData(type);
@@ -71,7 +65,7 @@ export default class App extends React.Component {
     });
   }
 
-  async setWeaknesses() {
+   setWeaknesses = async () => {
     // get a list of weaknesses from pokeAPI
     const firstPokemonUnfilteredWeaknesses = await this.findPokemonWeaknesses(
       this.state.firstPokemonTypes
@@ -101,7 +95,7 @@ export default class App extends React.Component {
   }
 
   // reset all state data for a particular pokemon
-  resetPokemonData(firstOrSecond) {
+  resetPokemonData = (firstOrSecond) => {
     if (firstOrSecond === 'firstPokemonTypes') {
       this.setState({
         firstPokemonTypes: [],
@@ -120,7 +114,7 @@ export default class App extends React.Component {
   }
 
   // Collect types from search for comparison
-  setPokemonTypes(pokemon) {
+  setPokemonTypes = (pokemon) => {
     this.setState({
       [pokemon.firstOrSecond]: pokemon.types,
     });

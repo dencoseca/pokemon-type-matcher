@@ -11,11 +11,8 @@ export default function PokemonStats({ pokemon, amISuperEffective }) {
     `Can you smeeeeeeeell what the ${capitalizedName} is cookin?!`,
     'Here comes the smackdown!',
   ];
-  const randomIndex = Math.floor(Math.random() * quotes.length - 1);
-  
-  function randomQuote() {
-    return quotes[randomIndex];
-  }
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  const quote = quotes[randomIndex];
 
   // Set the color of each type
   function setSpanColorByType(type) {
@@ -115,7 +112,7 @@ export default function PokemonStats({ pokemon, amISuperEffective }) {
       </div>
       <div className="card--foot">{types}</div>
       <p className="super-effective--text">
-        {amISuperEffective ? randomQuote() : null}
+        {amISuperEffective ? quote : null}
       </p>
     </div>
   );

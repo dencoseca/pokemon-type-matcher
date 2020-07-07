@@ -11,14 +11,9 @@ export default class SearchField extends React.Component {
       pokemon: {},
       isThereAPokemon: false,
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.randomizePokemon = this.randomizePokemon.bind(this);
-    this.fetchPokemon = this.fetchPokemon.bind(this);
   }
 
-  async fetchPokemon(query) {
+  fetchPokemon = async (query) => {
     await fetch(`https://pokeapi.co/api/v2/pokemon/${query}`)
       .then((response) => response.json())
       .then((data) => {
@@ -40,16 +35,16 @@ export default class SearchField extends React.Component {
       .catch((err) => {
         console.error(err);
       });
-  }
+  };
 
   // fill data with a random pokemon
-  randomizePokemon() {
+  randomizePokemon = () => {
     const randomNum = Math.floor(Math.random() * 807 + 1);
     this.fetchPokemon(randomNum);
-  }
+  };
 
   // reset pokemon data
-  handleClick() {
+  handleClick = () => {
     this.setState({
       query: '',
       buttonText: '',
@@ -57,19 +52,19 @@ export default class SearchField extends React.Component {
       isThereAPokemon: false,
     });
     this.props.resetPokemonData(this.props.firstOrSecond);
-  }
+  };
 
   // Get data from pokeAPI
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
     if (!this.state.query) {
       return;
     }
     this.fetchPokemon(this.state.query);
-  }
+  };
 
   // Control input and fetch button
-  handleChange(event) {
+  handleChange = (event) => {
     if (event.target.value) {
       // Capitalize pokemon name and display in button
       const query = event.target.value;
@@ -86,7 +81,7 @@ export default class SearchField extends React.Component {
         buttonText: '',
       });
     }
-  }
+  };
 
   render() {
     return (
