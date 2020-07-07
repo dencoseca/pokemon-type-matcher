@@ -173,6 +173,10 @@ body {
   .pokeball {
     width: 320px;
     margin-top: 7rem;
+
+    &--loading {
+      animation: wobble 0.1s linear infinite;
+    }
   }
 
   .secret-randomizer {
@@ -398,6 +402,17 @@ body {
 
   100% {
     transform: rotate(-10deg);
+  }
+}
+
+@keyframes wobble {
+  0%,
+  100% {
+    transform: rotate(-5deg);
+  }
+
+  50% {
+    transform: rotate(5deg);
   }
 }
 

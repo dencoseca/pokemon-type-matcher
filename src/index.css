@@ -130,6 +130,8 @@ body {
   .pokeball-container .pokeball {
     width: 320px;
     margin-top: 7rem; }
+    .pokeball-container .pokeball--loading {
+      animation: wobble 0.1s linear infinite; }
   .pokeball-container .secret-randomizer {
     height: 50px;
     width: 50px;
@@ -281,5 +283,11 @@ body {
     transform: translate3d(4px, 0, 0) rotate(-10deg); }
   100% {
     transform: rotate(-10deg); } }
+@keyframes wobble {
+  0%,
+  100% {
+    transform: rotate(-5deg); }
+  50% {
+    transform: rotate(5deg); } }
 
 /*# sourceMappingURL=index.css.map */

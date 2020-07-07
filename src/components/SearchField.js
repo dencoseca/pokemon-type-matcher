@@ -8,16 +8,20 @@ export default class SearchField extends React.PureComponent {
     buttonText: '',
     pokemon: {},
     isThereAPokemon: false,
+    loading: false,
   };
 
   fetchPokemon = async (query) => {
+    this.setState({
+      loading: true,
+    });
+
     await fetch(`https://pokeapi.co/api/v2/pokemon/${query}`)
       .then((response) => response.json())
       .then((data) => {
         // Record pokemon data to be passed to PokemonStats component
         this.setState({
           pokemon: data,
-          isThereAPokemon: true,
         });
         // Send types data back up to App component for comparison
         const types = data.types.map((item) => item.type.name);
@@ -27,9 +31,20 @@ export default class SearchField extends React.PureComponent {
           firstOrSecond: this.props.firstOrSecond,
           types,
         });
+
+        // delay PokemonStats component display
+        setTimeout(() => {
+          this.setState({
+            loading: false,
+            isThereAPokemon: true,
+          });
+        }, 500);
       })
       .catch((err) => {
         // catch spelling errors and display a message to user
+        this.setState({
+          loading: false,
+        });
         console.error(err);
         if (!this.props.spellBetter) {
           this.props.setSpellBetter(true);
@@ -83,6 +98,7 @@ export default class SearchField extends React.PureComponent {
       this.setState({
         query,
         buttonText: capitalizedTerm,
+        isThereAPokemon: false,
       });
     } else {
       // Reset state when user deletes input text
@@ -128,7 +144,13 @@ export default class SearchField extends React.PureComponent {
             />
           ) : (
             <div className="pokeball-container">
-              <img className="pokeball" src={pokeball} alt="pokeball" />
+              <img
+                className={
+                  this.state.loading ? 'pokeball pokeball--loading' : 'pokeball'
+                }
+                src={pokeball}
+                alt="pokeball"
+              />
               <button
                 className="secret-randomizer"
                 onClick={this.randomizePokemon}
