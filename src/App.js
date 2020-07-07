@@ -2,17 +2,14 @@ import React from 'react';
 import SearchField from './components/SearchField';
 
 export default class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      firstPokemonTypes: [],
-      firstPokemonWeaknesses: [],
-      firstPokemonIsSuperEffective: false,
-      secondPokemonTypes: [],
-      secondPokemonWeaknesses: [],
-      secondPokemonIsSuperEffective: false,
-    };
-  }
+  state = {
+    firstPokemonTypes: [],
+    firstPokemonWeaknesses: [],
+    firstPokemonIsSuperEffective: false,
+    secondPokemonTypes: [],
+    secondPokemonWeaknesses: [],
+    secondPokemonIsSuperEffective: false,
+  };
 
   setSuperEffectivePokemon = () => {
     const firstPokemonIsSuperEffective = this.state.firstPokemonTypes.some(
@@ -25,7 +22,7 @@ export default class App extends React.Component {
       firstPokemonIsSuperEffective,
       secondPokemonIsSuperEffective,
     });
-  }
+  };
 
   fetchTypeData = (type) => {
     return new Promise((resolve, reject) => {
@@ -47,7 +44,7 @@ export default class App extends React.Component {
         reject();
       }
     });
-  }
+  };
 
   findPokemonWeaknesses = async (pokemonTypes) => {
     return Promise.all(
@@ -63,9 +60,9 @@ export default class App extends React.Component {
       });
       return [...new Set(foundWeaknesses)];
     });
-  }
+  };
 
-   setWeaknesses = async () => {
+  setWeaknesses = async () => {
     // get a list of weaknesses from pokeAPI
     const firstPokemonUnfilteredWeaknesses = await this.findPokemonWeaknesses(
       this.state.firstPokemonTypes
@@ -92,7 +89,7 @@ export default class App extends React.Component {
       secondPokemonWeaknesses,
     });
     this.setSuperEffectivePokemon();
-  }
+  };
 
   // reset all state data for a particular pokemon
   resetPokemonData = (firstOrSecond) => {
@@ -111,7 +108,7 @@ export default class App extends React.Component {
         secondPokemonIsSuperEffective: false,
       });
     }
-  }
+  };
 
   // Collect types from search for comparison
   setPokemonTypes = (pokemon) => {
@@ -124,7 +121,7 @@ export default class App extends React.Component {
     ) {
       this.setWeaknesses();
     }
-  }
+  };
 
   render() {
     return (

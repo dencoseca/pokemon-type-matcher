@@ -3,15 +3,12 @@ import PokemonStats from './PokemonStats';
 import pokeball from '../pokeball.png';
 
 export default class SearchField extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      query: '',
-      buttonText: '',
-      pokemon: {},
-      isThereAPokemon: false,
-    };
-  }
+  state = {
+    query: '',
+    buttonText: '',
+    pokemon: {},
+    isThereAPokemon: false,
+  };
 
   fetchPokemon = async (query) => {
     await fetch(`https://pokeapi.co/api/v2/pokemon/${query}`)
