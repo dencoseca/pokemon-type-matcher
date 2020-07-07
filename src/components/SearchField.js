@@ -2,7 +2,7 @@ import React from 'react';
 import PokemonStats from './PokemonStats';
 import pokeball from '../images/pokeball.png';
 
-export default class SearchField extends React.Component {
+export default class SearchField extends React.PureComponent {
   state = {
     query: '',
     buttonText: '',

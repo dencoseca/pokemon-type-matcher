@@ -2,8 +2,7 @@ import React from 'react';
 
 export default function PokemonStats({ pokemon, amISuperEffective }) {
   // Capitalize name for display
-  const name = pokemon.name;
-  const capitalizedName = name[0].toUpperCase() + name.slice(1);
+  const capitalizedName = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
   const quotes = [
     "Goddamn I'm so super effective right now!",
     'Waaaaaaaaaaaah! The Power!',
@@ -12,8 +11,8 @@ export default function PokemonStats({ pokemon, amISuperEffective }) {
     'Here comes the smackdown!',
     'In your FACE!',
   ];
-  const randomIndex = Math.floor(Math.random() * quotes.length);
-  const quote = quotes[randomIndex];
+  const randomQuoteIndex = Math.floor(Math.random() * quotes.length);
+  const quote = quotes[randomQuoteIndex];
 
   // Set the color of each type
   function setSpanColorByType(type) {
