@@ -100,15 +100,18 @@ export default class App extends React.Component {
         firstPokemonWeaknesses: [],
         firstPokemonIsSuperEffective: false,
         secondPokemonIsSuperEffective: false,
-        spellBetter: false,
       });
-    } else {
+    } else if (firstOrSecond === 'secondPokemonTypes') {
       this.setState({
         secondPokemonTypes: [],
         secondPokemonWeaknesses: [],
         firstPokemonIsSuperEffective: false,
         secondPokemonIsSuperEffective: false,
-        spellBetter: false,
+      });
+    } else {
+      this.setState({
+        firstPokemonIsSuperEffective: false,
+        secondPokemonIsSuperEffective: false,
       });
     }
   };

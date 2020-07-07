@@ -19,24 +19,21 @@ export default class SearchField extends React.PureComponent {
     await fetch(`https://pokeapi.co/api/v2/pokemon/${query}`)
       .then((response) => response.json())
       .then((data) => {
-        // Record pokemon data to be passed to PokemonStats component
+        // Record pokemon data to be passed to PokemonStats and App components
         this.setState({
           pokemon: data,
         });
-        // Send types data back up to App component for comparison
         const types = data.types.map((item) => item.type.name);
 
-        this.props.setSpellBetter(false);
-        this.props.setPokemonTypes({
-          firstOrSecond: this.props.firstOrSecond,
-          types,
-        });
-
-        // delay PokemonStats component display
+        // delay PokemonStats component display and passing of type info to App component
         setTimeout(() => {
           this.setState({
             loading: false,
             isThereAPokemon: true,
+          });
+          this.props.setPokemonTypes({
+            firstOrSecond: this.props.firstOrSecond,
+            types,
           });
         }, 500);
       })
@@ -90,6 +87,10 @@ export default class SearchField extends React.PureComponent {
 
   // Control input and fetch button
   handleChange = (event) => {
+    // remove super effective styling
+    this.props.resetPokemonData();
+
+    // handle input event
     if (event.target.value) {
       // Capitalize pokemon name and display in button
       const query = event.target.value;
@@ -105,6 +106,7 @@ export default class SearchField extends React.PureComponent {
       this.setState({
         query: '',
         buttonText: '',
+        isThereAPokemon: false,
       });
     }
   };
