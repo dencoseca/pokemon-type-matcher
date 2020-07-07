@@ -22,6 +22,7 @@ export default class SearchField extends React.Component {
         // Send types data back up to App component for comparison
         const types = data.types.map((item) => item.type.name);
 
+        this.props.setSpellBetter(false);
         this.props.setPokemonTypes({
           firstOrSecond: this.props.firstOrSecond,
           types,
@@ -29,6 +30,12 @@ export default class SearchField extends React.Component {
       })
       .catch((err) => {
         console.error(err);
+        if (!this.props.spellBetter) {
+          this.props.setSpellBetter(true);
+          setTimeout(() => {
+            this.props.setSpellBetter(false);
+          }, 2000);
+        }
       });
   };
 

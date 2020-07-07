@@ -9,6 +9,13 @@ export default class App extends React.Component {
     secondPokemonTypes: [],
     secondPokemonWeaknesses: [],
     secondPokemonIsSuperEffective: false,
+    spellBetter: false,
+  };
+
+  setSpellBetter = (bool) => {
+    this.setState({
+      spellBetter: bool,
+    });
   };
 
   setSuperEffectivePokemon = () => {
@@ -93,6 +100,7 @@ export default class App extends React.Component {
         firstPokemonWeaknesses: [],
         firstPokemonIsSuperEffective: false,
         secondPokemonIsSuperEffective: false,
+        spellBetter: false,
       });
     } else {
       this.setState({
@@ -100,6 +108,7 @@ export default class App extends React.Component {
         secondPokemonWeaknesses: [],
         firstPokemonIsSuperEffective: false,
         secondPokemonIsSuperEffective: false,
+        spellBetter: false,
       });
     }
   };
@@ -119,35 +128,47 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="container">
-          <header className="header">
-            <h1 className="header--title">Pokemon Type Matcher</h1>
-            <p className="header--subtitle">
-              Choose two pokemon and see who is super effective!
-            </p>
-          </header>
-          <div className="search-fields">
-            <SearchField
-              firstOrSecond="firstPokemonTypes"
-              setPokemonTypes={this.setPokemonTypes}
-              resetPokemonData={this.resetPokemonData}
-              amISuperEffective={
-                this.state.firstPokemonIsSuperEffective ? true : false
-              }
-            />
-            <div className="vs-column">
-              <p className="vs-column--vs">VS</p>
-            </div>
-            <SearchField
-              firstOrSecond="secondPokemonTypes"
-              setPokemonTypes={this.setPokemonTypes}
-              resetPokemonData={this.resetPokemonData}
-              amISuperEffective={
-                this.state.secondPokemonIsSuperEffective ? true : false
-              }
-            />
+      <div className="container">
+        <header className="header">
+          <h1 className="header--title">Pokemon Type Matcher</h1>
+          <p className="header--subtitle">
+            Choose two pokemon and see who is super effective!
+          </p>
+          <div
+            className="spell-better"
+            style={
+              this.state.spellBetter
+                ? { display: 'block' }
+                : { display: 'none' }
+            }
+          >
+            Spell Better!
           </div>
+        </header>
+        <div className="search-fields">
+          <SearchField
+            firstOrSecond="firstPokemonTypes"
+            setPokemonTypes={this.setPokemonTypes}
+            resetPokemonData={this.resetPokemonData}
+            amISuperEffective={
+              this.state.firstPokemonIsSuperEffective ? true : false
+            }
+            setSpellBetter={this.setSpellBetter}
+            spellBetter={this.state.spellBetter}
+          />
+          <div className="vs-column">
+            <p className="vs-column--vs">VS</p>
+          </div>
+          <SearchField
+            firstOrSecond="secondPokemonTypes"
+            setPokemonTypes={this.setPokemonTypes}
+            resetPokemonData={this.resetPokemonData}
+            amISuperEffective={
+              this.state.secondPokemonIsSuperEffective ? true : false
+            }
+            setSpellBetter={this.setSpellBetter}
+            spellBetter={this.state.spellBetter}
+          />
         </div>
       </div>
     );

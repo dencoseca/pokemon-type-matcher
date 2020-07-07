@@ -28,6 +28,7 @@ body {
   width: 800px;
   margin: 3rem auto;
   border-radius: 30px;
+  position: relative;
 
   &--title {
     color: #feca1b;
@@ -38,6 +39,16 @@ body {
   &--subtitle {
     font-size: 2rem;
     color: white;
+  }
+
+  .spell-better {
+    position: absolute;
+    font-size: 5rem;
+    text-align: center;
+    z-index: 1;
+    width: 100%;
+    top: 40px;
+    animation: slamAndShake 1s ease-in forwards;
   }
 }
 
@@ -351,6 +362,42 @@ body {
   40%,
   60% {
     transform: translate3d(4px, 0, 0) rotate(-10deg);
+  }
+}
+
+@keyframes slamAndShake {
+  0% {
+    opacity: 0;
+    transform: scale(3) rotate(-10deg);
+  }
+
+  10% {
+    opacity: 1;
+    transform: scale(1) translate3d(-1px, 0, 0) rotate(-10deg);
+  }
+
+  90% {
+    transform: translate3d(-1px, 0, 0) rotate(-10deg);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0) rotate(-10deg);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0) rotate(-10deg);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0) rotate(-10deg);
+  }
+
+  100% {
+    transform: rotate(-10deg);
   }
 }
 
