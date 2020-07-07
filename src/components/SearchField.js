@@ -1,6 +1,6 @@
 import React from 'react';
 import PokemonStats from './PokemonStats';
-import pokeball from '../pokeball.png';
+import pokeball from '../images/pokeball.png';
 
 export default class SearchField extends React.Component {
   state = {
@@ -20,9 +20,7 @@ export default class SearchField extends React.Component {
           isThereAPokemon: true,
         });
         // Send types data back up to App component for comparison
-        const types = data.types.map((item) => {
-          return item.type.name;
-        });
+        const types = data.types.map((item) => item.type.name);
 
         this.props.setPokemonTypes({
           firstOrSecond: this.props.firstOrSecond,

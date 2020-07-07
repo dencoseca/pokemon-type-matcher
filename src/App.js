@@ -48,9 +48,7 @@ export default class App extends React.Component {
 
   findPokemonWeaknesses = async (pokemonTypes) => {
     return Promise.all(
-      pokemonTypes.map((type) => {
-        return this.fetchTypeData(type);
-      })
+      pokemonTypes.map((type) => this.fetchTypeData(type))
     ).then((result) => {
       const foundWeaknesses = [];
       result.forEach((arrayOfWeaknesses) => {
@@ -73,14 +71,10 @@ export default class App extends React.Component {
 
     // filter out self-super-effective types from dual type pokemon
     const firstPokemonWeaknesses = firstPokemonUnfilteredWeaknesses.filter(
-      (type) => {
-        return !this.state.firstPokemonTypes.includes(type);
-      }
+      (type) => !this.state.firstPokemonTypes.includes(type)
     );
     const secondPokemonWeaknesses = secondPokemonUnfilteredWeaknesses.filter(
-      (type) => {
-        return !this.state.secondPokemonTypes.includes(type);
-      }
+      (type) => !this.state.secondPokemonTypes.includes(type)
     );
 
     // record the weaknesses
