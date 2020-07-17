@@ -16,70 +16,48 @@ export default function PokemonStats({ pokemon, amISuperEffective }) {
 
   // Set the color of each type
   function setSpanColorByType(type) {
-    let spanColor;
     switch (type) {
       case 'normal':
-        spanColor = '#a8a878';
-        break;
+        return '#a8a878';
       case 'fighting':
-        spanColor = '#c03028';
-        break;
+        return '#c03028';
       case 'flying':
-        spanColor = '#a890f0';
-        break;
+        return '#a890f0';
       case 'poison':
-        spanColor = '#a040a0';
-        break;
+        return '#a040a0';
       case 'ground':
-        spanColor = '#e0c068';
-        break;
+        return '#e0c068';
       case 'rock':
-        spanColor = '#b8a038';
-        break;
+        return '#b8a038';
       case 'bug':
-        spanColor = '#a8b820';
-        break;
+        return '#a8b820';
       case 'ghost':
-        spanColor = '#705898';
-        break;
+        return '#705898';
       case 'steel':
-        spanColor = '#b8b8d0';
-        break;
+        return '#b8b8d0';
       case 'fire':
-        spanColor = '#f08030';
-        break;
+        return '#f08030';
       case 'water':
-        spanColor = '#6890f0';
-        break;
+        return '#6890f0';
       case 'grass':
-        spanColor = '#78c850';
-        break;
+        return '#78c850';
       case 'electric':
-        spanColor = '#f8d030';
-        break;
+        return '#f8d030';
       case 'psychic':
-        spanColor = '#f85888';
-        break;
+        return '#f85888';
       case 'ice':
-        spanColor = '#98d8d8';
-        break;
+        return '#98d8d8';
       case 'dragon':
-        spanColor = '#7038f8';
-        break;
+        return '#7038f8';
       case 'dark':
-        spanColor = '#705848';
-        break;
+        return '#705848';
       case 'fairy':
-        spanColor = '#ee99ac';
-        break;
+        return '#ee99ac';
       case '???':
-        spanColor = '#68a090';
-        break;
+        return '#68a090';
       default:
-        spanColor = '#000000';
+        return '#000000';
     }
-
-    return spanColor;
   }
 
   // Create an array of span elements

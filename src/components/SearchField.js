@@ -82,7 +82,7 @@ export default class SearchField extends React.PureComponent {
     if (!this.state.query) {
       return;
     }
-    this.fetchPokemon(this.state.query);
+    this.fetchPokemon(this.state.query.toLowerCase());
   };
 
   // Control input and fetch button
