@@ -89,6 +89,13 @@ body {
       padding: 0.6rem 1rem;
       width: 320px;
       border-radius: 10px;
+      border: 2px solid grey;
+
+      &:disabled {
+        background-color: #fff;
+        border: 2px solid grey;
+        color: #000;
+      }
 
       &:focus {
         outline: none;

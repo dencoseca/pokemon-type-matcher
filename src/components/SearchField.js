@@ -125,6 +125,7 @@ export default class SearchField extends React.PureComponent {
             placeholder="e.g. Scyther"
             value={this.state.query}
             onChange={this.handleChange}
+            disabled={this.state.loading}
           ></input>
           <span
             className="search-field--reset-button"
@@ -132,13 +133,17 @@ export default class SearchField extends React.PureComponent {
           >
             Reset
           </span>
-          <button className="search-field--button" type="submit">
+          <button
+            className="search-field--button"
+            type="submit"
+            disabled={this.state.loading}
+          >
             {this.state.buttonText}
             {this.state.buttonText === '' ? '' : '...'} I Choose You!
           </button>
         </form>
         {
-          /* If there is a result from the API display it */
+          /* If there is a result from the API display it or display pokeball */
           this.state.isThereAPokemon ? (
             <PokemonStats
               pokemon={this.state.pokemon}
@@ -156,6 +161,7 @@ export default class SearchField extends React.PureComponent {
               <button
                 className="secret-randomizer"
                 onClick={this.randomizePokemon}
+                disabled={this.state.loading}
               ></button>
             </div>
           )
