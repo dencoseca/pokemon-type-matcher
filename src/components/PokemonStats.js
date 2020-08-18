@@ -85,7 +85,7 @@ export default function PokemonStats({ pokemon, amISuperEffective }) {
       <div className="card--body">
         <img
           className="card--sprite"
-          src={pokemon.sprites.front_default}
+          src={pokemon.sprite}
           alt={pokemon.name}
         />
       </div>

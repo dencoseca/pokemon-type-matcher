@@ -21,7 +21,12 @@ export default class SearchField extends React.PureComponent {
       .then((data) => {
         // Record pokemon data to be passed to PokemonStats and App components
         this.setState({
-          pokemon: data,
+          pokemon: {
+            id: data.id,
+            name: data.name,
+            types: data.types,
+            sprite: data.sprites.front_default,
+          },
         });
         const types = data.types.map((item) => item.type.name);
 
