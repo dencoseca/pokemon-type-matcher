@@ -1,3 +1,11 @@
+/* Breakpoints */
+
+@mixin tablet {
+  @media (min-width: 1025px) {
+    @content;
+  }
+}
+
 /* General Styles */
 
 @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
@@ -30,15 +38,30 @@ body {
   border-radius: 30px;
   position: relative;
 
+  @include tablet {
+    padding: 2rem;
+    width: 768px;
+    margin: 1rem auto;
+    border-radius: 30px;
+  }
+
   &--title {
     color: #feca1b;
     font-size: 10vw;
     font-family: bangers;
+
+    @include tablet {
+      font-size: 5rem;
+    }
   }
 
   &--subtitle {
     font-size: 4vw;
     color: white;
+
+    @include tablet {
+      font-size: 2rem;
+    }
   }
 
   .spell-better {
@@ -49,6 +72,12 @@ body {
     width: 100%;
     top: 10vw;
     animation: slamAndShake 1s ease-in forwards;
+
+    @include tablet {
+      font-size: 6rem;
+      width: 100%;
+      top: 80px;
+    }
   }
 }
 
@@ -58,10 +87,19 @@ body {
   flex-direction: column;
   align-items: center;
 
+  @include tablet {
+    width: 170px;
+  }
+
   &--vs {
     font-size: 5vw;
     position: relative;
     top: 50vw;
+
+    @include tablet {
+      font-size: 5rem;
+      top: 360px;
+    }
   }
 }
 
@@ -69,6 +107,10 @@ body {
 
 .pokemon-column {
   width: 30vw;
+
+  @include tablet {
+    width: 300px;
+  }
 }
 
 .search-fields {
@@ -85,15 +127,26 @@ body {
       margin-bottom: 0.5rem;
       font-size: 3.5vw;
       text-align: center;
+
+      @include tablet {
+        font-size: 2rem;
+      }
     }
 
     &--input {
       line-height: 3.5vw;
       font-size: 2vw;
       padding: 0.8vw 2vw;
-      width: 30vw;
+      width: 100%;
+
       border-radius: 10px;
       border: 2px solid grey;
+
+      @include tablet {
+        line-height: 2rem;
+        font-size: 1.5rem;
+        padding: 0.8rem 1rem;
+      }
 
       &:disabled {
         background-color: #fff;
@@ -126,11 +179,22 @@ body {
       user-select: none;
       z-index: 999;
 
+      @include tablet {
+        top: 59px;
+        right: 10px;
+        width: 60px;
+        font-size: 1rem;
+      }
+
       &:hover {
         top: 6.5vw;
         background-color: #ed6a67;
         box-shadow: 0px 2px 0px #b83f3d;
         cursor: pointer;
+
+        @include tablet {
+          top: 62px;
+        }
       }
 
       &:focus {
@@ -140,6 +204,10 @@ body {
       &:active {
         top: 6.7vw;
         box-shadow: none;
+
+        @include tablet {
+          top: 64px;
+        }
       }
     }
 
@@ -160,10 +228,20 @@ body {
       cursor: pointer;
       z-index: 999;
 
+      @include tablet {
+        margin-top: 1rem;
+        padding: 1.3rem 1.5rem;
+        font-size: 1.5rem;
+      }
+
       &:hover {
         top: 0.5vw;
         background-color: #81b8de;
         box-shadow: 0px 2px 0px #1c88c9;
+
+        @include tablet {
+          top: 5px;
+        }
       }
 
       &:focus {
@@ -173,6 +251,10 @@ body {
       &:active {
         top: 0.8vw;
         box-shadow: none;
+
+        @include tablet {
+          top: 8px;
+        }
       }
     }
   }
@@ -187,6 +269,11 @@ body {
   .pokeball {
     width: 35vw;
     margin-top: 16vw;
+
+    @include tablet {
+      width: 350px;
+      margin-top: 40px;
+    }
 
     &--loading {
       animation: wobble 0.1s linear infinite;
@@ -204,6 +291,13 @@ body {
     border-radius: 50%;
     cursor: pointer;
 
+    @include tablet {
+      height: 60px;
+      width: 60px;
+      top: 185px;
+      right: 120px;
+    }
+
     &:focus {
       outline: none;
     }
@@ -219,6 +313,11 @@ body {
   max-width: 30vw;
   animation: fadeIn 0.2s ease-in forwards;
 
+  @include tablet {
+    margin-top: 2rem;
+    max-width: 300px;
+  }
+
   &--head,
   &--body,
   &--foot {
@@ -226,18 +325,34 @@ body {
     background-color: #fff;
     margin-top: 1vw;
     box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.1);
+
+    @include tablet {
+      margin-top: 1rem;
+    }
   }
 
   &--head {
     padding: 2vw 3vw;
+
+    @include tablet {
+      padding: 1rem 2rem;
+    }
   }
 
   &--number {
     font-size: 3vw;
+
+    @include tablet {
+      font-size: 1.5rem;
+    }
   }
 
   &--name {
     font-size: 4vw;
+
+    @include tablet {
+      font-size: 2.5rem;
+    }
   }
 
   &--body {
@@ -261,6 +376,12 @@ body {
     margin: 2vw 2vw;
     padding: 1vw 2vw;
     border-radius: 5px;
+
+    @include tablet {
+      font-size: 1rem;
+      margin: 0.7rem 1rem;
+      padding: 0.5rem 1rem;
+    }
   }
 
   &.super-effective {
@@ -283,7 +404,14 @@ body {
       opacity: 0.5;
       filter: blur(10px);
       animation: superEffective 1s infinite linear;
+
+      @include tablet {
+        right: -80px;
+        height: 460px;
+        width: 500px;
+      }
     }
+
     &--bang:after {
       content: '';
       background-image: url('./images/bang-yellow.png');
@@ -298,8 +426,16 @@ body {
       opacity: 0.5;
       filter: blur(10px);
       animation: superEffective 0.9s infinite linear;
+
+      @include tablet {
+        top: 10px;
+        right: -80px;
+        height: 430px;
+        width: 480px;
+      }
     }
   }
+
   .super-effective--text {
     font-size: 4vw;
     position: relative;
@@ -309,6 +445,13 @@ body {
     text-align: center;
     transform: rotate(-10deg);
     animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+
+    @include tablet {
+      font-size: 4rem;
+      top: 50px;
+      right: 190px;
+      width: 700px;
+    }
   }
 }
 
