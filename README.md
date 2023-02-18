@@ -9,10 +9,6 @@ A fun little React app that lets you compare the types of two Pokemon and see wh
 - CSS keyframes animation
 - PokeAPI
 
-#### Live link
-
-[Pokemon Type Matcher](https://pokemon-type-matcher.vercel.app/)
-
 ## Status
 
 Complete
